@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap');
+
+:root { color-scheme: light; --ink:#253257; --purple:#6d5dfc; --yellow:#ffd95a; }
+* { box-sizing: border-box; }
+html, body { width:100%; height:100%; margin:0; overflow:hidden; background:#29245d; }
+body { font-family:'Nunito','Arial Rounded MT Bold',sans-serif; }
+#game-shell { position:relative; width:100vw; height:100vh; display:grid; place-items:center; background:radial-gradient(circle at 50% 30%,#8ee8ff,#5a58d9 75%); }
+#game { width:100%; height:100%; }
+#game canvas { display:block; width:100%!important; height:100%!important; object-fit:contain; }
+.speech-layer { position:absolute; inset:0; z-index:20; display:none; place-items:center; background:rgba(26,28,67,.55); backdrop-filter:blur(5px); }
+.speech-layer.show { display:grid; }
+.speech-card { width:min(440px,85vw); padding:28px; text-align:center; color:var(--ink); background:#fff; border:5px solid #e3e7ff; border-radius:30px; box-shadow:0 18px 0 rgba(39,35,94,.28); }
+.speech-card strong { font-size:26px; }
+.speech-card p { min-height:30px; color:#6d5dfc; font-size:20px; }
+.speech-card button { border:0; border-radius:16px; background:#ff6f76; color:#fff; padding:12px 28px; font:800 18px Nunito,sans-serif; cursor:pointer; }
+.answer-input { width:100%; margin:8px 0 18px; border:4px solid #dfe2ff; border-radius:16px; padding:14px 16px; color:var(--ink); font:800 19px Nunito,sans-serif; outline:none; }
+.answer-input:focus { border-color:#6d5dfc; box-shadow:0 0 0 5px rgba(109,93,252,.15); }
+.answer-actions { display:flex; gap:12px; justify-content:center; }
+.answer-actions #cancel-answer { background:#8991aa; }
+.answer-actions .submit-answer { background:#6d5dfc; }
+.listening-dot { display:inline-block; width:18px; height:18px; margin-right:10px; border-radius:50%; background:#ff5d70; box-shadow:0 0 0 0 rgba(255,93,112,.6); animation:pulse 1.2s infinite; }
+@keyframes pulse { 70% { box-shadow:0 0 0 18px rgba(255,93,112,0); } }
+#rotate-hint { display:none; position:absolute; inset:0; z-index:30; place-items:center; padding:30px; text-align:center; color:white; background:#5547c8; font-size:24px; font-weight:900; }
+.load-error { height:100%; display:grid; place-content:center; text-align:center; color:white; }
+/* Phaser scales the 16:9 canvas to fit narrow windows, so rotation is optional. */
+@media (orientation:portrait) and (max-width:700px) { #rotate-hint { display:none; } }
+button:focus-visible { outline:4px solid #ffd95a; outline-offset:3px; }

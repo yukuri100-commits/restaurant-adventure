@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#6d5dfc" />
+  <title>AI Restaurant Adventure</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game-shell" aria-label="AI Restaurant Adventure educational RPG">
+    <div id="game"></div>
+    <div id="speech-layer" class="speech-layer" aria-live="polite">
+      <div class="speech-card">
+        <span class="listening-dot"></span>
+        <strong>Yummy is listening…</strong>
+        <p id="live-transcript">Say your order clearly!</p>
+        <button id="stop-listening" type="button">Stop</button>
+      </div>
+    </div>
+    <div id="answer-layer" class="speech-layer" aria-live="polite">
+      <form id="answer-form" class="speech-card">
+        <strong>Type your order</strong>
+        <p id="answer-target">Use a complete English sentence.</p>
+        <input id="answer-input" class="answer-input" autocomplete="off" aria-label="Your English order" />
+        <div class="answer-actions">
+          <button id="cancel-answer" type="button">Cancel</button>
+          <button class="submit-answer" type="submit">Check Answer</button>
+        </div>
+      </form>
+    </div>
+    <div id="rotate-hint">↻ Please rotate your device for the best adventure!</div>
+  </main>
+  <script src="vendor/phaser.min.js"></script>
+  <script>
+    if (!window.Phaser) {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/phaser@3.90.0/dist/phaser.min.js';
+      script.onload = () => import('./game.js');
+      script.onerror = () => document.getElementById('game').innerHTML = '<div class="load-error"><h1>Engine not found</h1><p>Connect once to the internet, then reload the adventure.</p></div>';
+      document.head.appendChild(script);
+    } else {
+      import('./game.js');
+    }
+  </script>
+</body>
+</html>
