@@ -36,11 +36,11 @@
     if (!window.Phaser) {
       const script = document.createElement('script');
       script.src = 'https://cdn.jsdelivr.net/npm/phaser@3.90.0/dist/phaser.min.js';
-      script.onload = () => import('./game.js');
+      script.onload = () => import('./game.js?v=20260624-3');
       script.onerror = () => document.getElementById('game').innerHTML = '<div class="load-error"><h1>Engine not found</h1><p>Connect once to the internet, then reload the adventure.</p></div>';
       document.head.appendChild(script);
     } else {
-      import('./game.js');
+      import('./game.js?v=20260624-3');
     }
   </script>
 </body>
